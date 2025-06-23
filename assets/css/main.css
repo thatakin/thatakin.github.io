@@ -2440,82 +2440,52 @@ ul.actions.fit.stacked {
 /* Feature Icons */
 
 ul.feature-icons {
-	list-style: none; /* Keep this */
-	padding-left: 0; /* Keep this */
+	list-style: none;
+	padding-left: 0;
 }
 
 ul.feature-icons li {
 	text-decoration: none;
 	display: inline-block;
 	margin: 0 0 1.6875em 0;
-	/* ADJUST PADDING: Remove padding that made space for the old ::before icon */
+	/* This padding will create space for the absolutely positioned icon */
 	padding: 0.35em 0 0
-		0; /* Changed from 3.5em to 0. We will position the <i> instead. */
-	position: relative; /* Keep this, essential for absolute positioning of the icon */
-	vertical-align: top; /* Keep this */
+		3.5em; /* REVERTED: Re-added the left padding here for the text */
+	position: relative;
+	vertical-align: top;
 	width: 48%; /* Keep this for two-column layout */
-	/* Add any other missing specific layout rules for li if needed after inspection */
 }
 
 /* REMOVE OR COMMENT OUT THIS BLOCK (ul.feature-icons li:before) */
-/* This was creating the old custom circle background and old Font Awesome 5 icon. */
-/* Delete or comment out both of these `li:before` blocks: */
+/* (Make sure these are completely gone or commented out as discussed before) */
 
-/*
-ul.feature-icons li:before {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    display: inline-block;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    line-height: 1;
-    text-transform: none !important;
-    font-family: "Font Awesome 5 Free";
-    font-weight: 400;
-}
+/* ul.feature-icons li:before { ... first block ... } */
+/* ul.feature-icons li:before { ... second block ... } */
 
-ul.feature-icons li:before {
-    background: #457b9d;
-    border-radius: 100%;
-    color: #ffffff;
-    display: block;
-    height: 2.5em;
-    left: 0;
-    line-height: 2.5em;
-    position: absolute;
-    text-align: center;
-    top: 0;
-    width: 2.5em;
-}
-*/
-
-/* NOW, ADD NEW CSS TO STYLE YOUR NEW <i> ICONS */
+/* NEW CSS TO STYLE YOUR <i> ICONS */
 /* This targets the <i> tags *inside* your ul.feature-icons li elements */
 ul.feature-icons li .fa-solid,
 ul.feature-icons li .fa-brands {
 	/* Add .fa-regular if you use regular icons */
-	/* Position the icon absolutely, similar to how the old ::before was positioned */
+	/* Positioning and background/shape of the circle */
 	position: absolute;
 	left: 0;
-	top: 0; /* Or adjust slightly if needed for vertical alignment */
-
-	/* Style the circle background and the icon itself */
+	top: 0;
 	background: #457b9d; /* Original background color */
 	border-radius: 100%; /* Makes it a circle */
-	color: #ffffff; /* Icon color */
-	display: flex; /* Use flexbox for easy centering of the icon */
-	align-items: center; /* Vertically center icon */
-	justify-content: center; /* Horizontally center icon */
 	height: 2.5em; /* Original size */
 	width: 2.5em; /* Original size */
-	line-height: 1; /* Reset line-height to 1 for flexbox centering */
+
+	/* Center the Font Awesome icon within the circle */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	/* SET THE ICON COLOR TO WHITE */
+	color: #ffffff; /* <-- THIS IS THE KEY FOR WHITE ICONS */
 
 	/* Adjust font size of the icon within the circle */
-	font-size: 1.25em; /* You might need to tweak this to fit well */
-
-	/* Add space between the circle icon and the text content of the <li> */
-	margin-right: 0.5em; /* This is crucial for text spacing */
+	font-size: 1.25em; /* You might need to tweak this slightly */
 
 	/* Ensure Font Awesome's own styles are not overridden by accident */
 	-moz-osx-font-smoothing: grayscale;
@@ -2523,24 +2493,15 @@ ul.feature-icons li .fa-brands {
 	font-style: normal;
 	font-variant: normal;
 	text-rendering: auto;
-	text-transform: none !important; /* Keep this */
+	text-transform: none !important;
 
-	/* For Font Awesome 6, explicit font-family and weight might be needed for the icon itself if not inherited */
-	/* If your icons are still not showing, explicitly add these: */
-	/* font-family: "Font Awesome 6 Solid"; */ /* For fa-solid icons */
-	/* font-family: "Font Awesome 6 Brands"; */ /* For fa-brands icons */
-	/* font-weight: 900; */ /* For fa-solid */
-	/* font-weight: 400; */ /* For fa-brands */
+	/* Explicitly set Font Awesome family and weight for robustness (optional, but good for debugging) */
+	/* If you find specific icons (like fa-solid) are still not showing the correct glyph, uncomment these: */
+	/* font-family: "Font Awesome 6 Solid"; */
+	/* font-weight: 900; */ /* For solid icons */
+	/* font-family: "Font Awesome 6 Brands"; */
+	/* font-weight: 400; */ /* For brand icons */
 }
-
-/* Add padding back to the li's content if needed */
-/* This will push the text content away from the absolutely positioned icon */
-ul.feature-icons li span.content-text {
-	/* Assuming you wrap the text in a span. Or just use ul.feature-icons li */
-	margin-left: 3.5em; /* This creates the space equivalent to the old padding */
-	display: block; /* If the text needs to be on its own line */
-}
-
 /* Icons */
 
 ul.icons {
